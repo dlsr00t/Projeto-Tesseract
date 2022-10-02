@@ -73,3 +73,5 @@ for c in range(0,numero_de_questoes):
 
 print(dicionario_de_resp)
 print(dicionario_de_resp.get(1))
+
+

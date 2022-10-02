@@ -6,16 +6,15 @@ class Client():
 	def __init__(self, HOST, PORT):
 		with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as self.connection:
 			self.connection.connect((HOST, PORT))
-			print("Conectado ao servidor.")
-		'''	with open("/home/foureyes/.programs/imagem_de_test.png", "rb") as foto:
-				for data in foto.readlines():
-					self.connection.send(data)
-
-				self.enviado = "Arquivo enviado com sucesso"'''
+			status = self.connection.recv(1024)
+			if status.decode() == "":
+				print("Sem conexao com o servidor")
+			elif status.decode() == "CONECTADO ao servidor":
+				print(status.decode())
 
 
 	def send_file(self, name):
-		with open("imagem_de_test.png", "rb") as foto:
+		with open(name, "rb") as foto:
 			for data in foto.readlines():
 				self.connection.send(data)
 
