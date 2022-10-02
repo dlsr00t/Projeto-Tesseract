@@ -1,6 +1,6 @@
 import socket
 
-class Server():
+class Server:
 	HOST = '127.0.0.1'
 	PORT = 65432
 	def __init__(self):
@@ -11,11 +11,12 @@ class Server():
 				print("Esperando por conexoes")
 				self.connected, self.addr = connection.accept()
 				print(f'O seguinte ip foi conectado: {self.addr}')
-				self.arquivo()
+				self.receptor(nome="foto.png")
 
-	def arquivo(self):
+	def receptor(self, nome="foto.png"):
+		self.clean_file(nome = nome)
 		with self.connected as con:
-			with open("foto.png", "wb") as foto:
+			with open(nome, "wb") as foto:
 				while True:
 					data = con.recv(1024)
 					if not data:
@@ -25,6 +26,11 @@ class Server():
 
 					foto.write(data)
 
+	def clean_file(self, nome):
+		with open(nome, "wb") as foto:
+			foto.write(b'')
+
+
 if __name__ == "__main__":
-	Server()
+	Server().receptor()
 
