@@ -44,7 +44,7 @@ def diferenca(alternativaf, alternativac):
      ###Exemplo: Pegar todas as alternativas "a)" de cada questao respectivamente
      ###Entao a funcao pegaria a alternativa "a)" da questao 1, a alternativa "a)" da questao 2 e etc.
      ###O motivo de nos estarmos fazendo isso e porque nos iremos usar as alternativas para buscar a resposta para uma pergunta e nao o contrario
-     ###E quando nos conseguirmos pegar todas as perguntas com uma taxa de acerto de 10/10, nos iremos implementar isso no arquivo "requisicao (3).py"
+     ###E quando nos conseguirmos pegar todas as alternativas com uma taxa de acerto de 10/10, nos iremos implementar isso no arquivo "requisicao (3).py"
      ###Dps que isso for feito o sistema de reconhecimento e busca estara completo
      ###Entao so faltara terminar de programar o "main.py" e o "servidor.py" servidor esse que tambem ira ser implementado no "requisicao (3).py"
 
