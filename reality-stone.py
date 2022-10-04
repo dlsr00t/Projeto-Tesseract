@@ -1,4 +1,4 @@
-from curses.ascii import alt
+#from curses.ascii import alt
 import cv2
 import pytesseract as tesseract
 import time
@@ -21,22 +21,18 @@ def ler():
     #time.sleep(60)
     print(conteudo.find("a) "))
     print( conteudo.find("e) "))
-    question_finder(conteudo)
+    question_finder(conteudo, diferenca)
 
-def question_finder(texto):
-    a = texto.find("a)")
-    b = texto.find("b)")
-    c = texto.find("c)")
-    d = texto.find("d)")
-    e = texto.find("e)")
-    a2 = texto.count("a)")
-    b2 = texto.count("b)")
-    c2 = texto.count("c)")
-    d2 = texto.count("d)")
-    e2 = texto.count("e)")
+def question_finder(texto, func):
+    letras = ['a','b','c','d','e']
+    global alternativas
+    alternativas = {}
+    for letra in letras:
+        alternativas[letra] = texto.find(f'{letra})'),texto.count(f'{letra})')
+     
+    func(alternativas['a'][0], alternativas['a'][1])
+    #diferenca(alternativas['a'][0], alternativas['a'][1])
 
-    #a2 = 2
-    #c2 = 1
 
 def diferenca(alternativaf, alternativac):
      ###Essa funcao tem como objetivo fazer o programa saber se existe mais de uma alternativa "a)" por exemplo,
@@ -49,18 +45,49 @@ def diferenca(alternativaf, alternativac):
      ###Entao so faltara terminar de programar o "main.py" e o "servidor.py" servidor esse que tambem ira ser implementado no "requisicao (3).py"
 
 
-    if (alternativaf!=a2):                 
-        print(f'A quantidade de {alternativaf} e diferente da variavel "a2"')
-    elif (alternativaf!=b2):
-        print(f'A quantidade de {alternativaf} e diferente da variavel "b2"')
-    elif (alternativaf!=c2):
-        print(f'A quantidade de {alternativaf} e diferente da variavel "c2"')
-    elif (alternativaf!=d2):
-        print(f'A quantidade de {alternativaf} e diferente da variavel "d2"')
-    elif (alternativaf!=e2):
-        print(f'A quantidade de {alternativaf} e diferente da variavel "e2"')
-    else:
-        alternativa_encontrada = texto.find(alternativaf, alternativaf+10)
+    if (alternativac!=alternativas['a'][1]):               
+        print(f'A quantidade de {alternativac} e diferente da variavel "alternativas[\'a\'][1]"')
+        if alternativac < alternativas['a'][1]:
+            print(f'A quantidade de {alternativac} e menor do que a quantidade da variavel "alternativas[\'a\'][1]\n\n')
+        elif alternativac > alternativas['a'][1]:
+            print(f'A quantiade de {alternativac} e maior do que a quantidade da variavel "alternativas[\'a\'][1]')            
 
+
+    elif (alternativac!=alternativas['b'][1]):
+        print(f'A quantidade de {alternativac} e diferente da variavel "alternativas[\'b\'][1]"')
+        if alternativac < alternativas['b'][1]:
+            print(f'A quantidade de {alternativac} e menor do que a quantidade da variavel "alternativas[\'b\'][1]"')
+        elif alternativac > alternativas['b'][1]:
+            print(f'A quantidade de {alternativac} e maior do que a quantidade da variavel "alternativas[\'b\'][1]"')
+
+
+    elif (alternativac!=alternativas['c'][1]):
+        print(f'A quantidade de {alternativac} e diferente da variavel "alternativas[\'c\'][1]"')
+        if alternativac < alternativas['c'][1]:
+            print(f'A quantidade de {alternativac} e menor do que a quantidade da variavel "alternativas[\'c\'][1]"')
+        elif alternativac > alternativas['c'][1]:
+            print(f'A quantidade de {alternativac} e maior do que a quantidade da variavel "alternativas[\'c\'][1]"')
+        
+
+    elif (alternativac!=alternativas['d'][1]):
+        print(f'A quantidade de {alternativac} e diferente da variavel "alternativas[\'d\'][1]"')
+        if alternativac < alternativas['d'][1]:
+            print(f'A quantidade de {alternativac} e menor do que a quantidade da variavel "alternativas[\'d\'][1]"')
+        elif alternativac > alternativas['d'][1]:
+            print(f'A quantidade de {alternativac} e maior do que a quantidade da variavel "alternativas[\'d\'][1]')
+   
+
+    elif (alternativac!=alternativas['e'][1]):
+        print(f'A quantidade de {alternativac} e diferente da variavel "alternativas[\'e\'][1]"')
+        if alternativac < alternativas['e'][1]:
+            print(f'A quantidade de {alternativac} e diferente da variavel "alternativas[\'e\'][1]"')
+        elif alternativac > alternativas['e'][1]:
+            print(f'A quantidade de {alternativac} e diferente da variavel "alternativas[\'e\'][1]"')
+
+
+    else:
+        alternativa_encontrada = texto.find(alternativaf, alternativaf+100)
+        print(alternativa_encontrada)
+        
 
 ler()
